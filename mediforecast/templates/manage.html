@@ -1,0 +1,588 @@
+{% comment %} 
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Appointment Form</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    
+      /* Reset default margin and padding */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Basic styling */
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        text-align: center;
+        background-image: url(static/img/61807.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: bolder;
+        margin-bottom: 10px;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      nav {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        padding: 10px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 5rem;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: 900;
+        color: white;
+      }
+
+      .logo:hover {
+        color: rgba(255, 255, 255, 0.703);
+      }
+      nav ul {
+        list-style: none;
+      }
+      nav ul li {
+        display: inline;
+        margin-right: 10px;
+      }
+      li {
+        padding: 3px;
+        font-weight: bolder;
+        border-radius: 5px;
+      }
+      li:hover {
+        background-color: rgba(26, 26, 26, 0.7);
+      }
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      section {
+        padding: 20px;
+        transition: background-color 0.3s ease;
+      }
+
+      .hero {
+        text-align: center;
+        color: #2838b1;
+      }
+      .hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+      .hero p {
+        font-size: 20px;
+        margin-bottom: 30px;
+      }
+      .search-bar input[type="text"] {
+        padding: 10px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        width: 300px;
+        max-width: 100%;
+      }
+      #services h1 {
+        font-weight: bolder;
+      }
+      .models {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .model {
+        background-color: white;
+        border-radius: 10px;
+        margin: 10px;
+        width: 20vw;
+        height: 40vh;
+        transition: border 0.3 ease;
+        border: 2px solid rgb(198, 198, 198);
+      }
+      .model:hover {
+        box-shadow: 10px 10px 10px rgb(107, 107, 108);
+      }
+      .model .imge {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 80%;
+        border-bottom: 2px solid rgb(198, 198, 198);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      .wellBeing {
+        background-image: url(static/img/wellbeing.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .prediction {
+        background-image: url(static/img/prediction.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .chat {
+        background-image: url(static/img/chat.png);
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      .BMI {
+        background-image: url(static/img/wellbeing.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .model h2 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+      .model p {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        bottom: 0;
+        width: 100%;
+        margin-top: auto;
+      }
+      body {
+        background-image: url(static/img/61807.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+      }
+      
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .form-group {
+        margin-bottom: 20px;
+      }
+      
+      label {
+        display: block;
+        font-weight: bold;
+      }
+      
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="date"],
+      input[type="time"],
+      textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      
+      button:hover {
+        background-color: #0056b3;
+      }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html"><span class="logo"> HealthForecast </span></a>
+
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="Doctors.html">Doctors</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="manage.html">Appointment</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <h2>Book an Appointment</h2>
+    {% if result %}
+    <h1> {{result}}</h1>
+    {% endif %} 
+    <form action="" method="POST"  id="appointmentForm">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="doctor">Doctors</label>
+        <select name="doc" id="doctors">
+        
+            <option value="john">Dr. John Doe(Cardiologist)</option>
+            <option value="Jane">Dr. Jane Smith(Physician)</option>
+            <option value="Michael">Dr. Michael Johnson(Endocrinologist)</option>
+        
+          
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="date">Preferred Date:</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+      <div class="form-group">
+        <label for="time">Preferred Time:</label>
+        <input type="time" id="time" name="time" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message (optional):</label>
+        <textarea id="message" name="message"></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <footer>
+    <p>&copy; 2024 Medical Website. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html> {% endcomment %}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doctor Appointment Form</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        text-align: center;
+        background-image: url("images/61807.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: bolder;
+        margin-bottom: 10px;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      nav {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        padding: 10px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 5rem;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: 900;
+        color: white;
+      }
+
+      .logo:hover {
+        color: rgba(255, 255, 255, 0.703);
+      }
+      nav ul {
+        list-style: none;
+      }
+      nav ul li {
+        display: inline;
+        margin-right: 10px;
+      }
+      li {
+        padding: 3px;
+        font-weight: bolder;
+        border-radius: 5px;
+      }
+      li:hover {
+        background-color: rgba(26, 26, 26, 0.7);
+      }
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      section {
+        padding: 20px;
+        transition: background-color 0.3s ease;
+      }
+
+      .hero {
+        text-align: center;
+        color: rgb(76, 2, 76);
+      }
+      .hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+      .hero p {
+        font-size: 20px;
+        margin-bottom: 30px;
+      }
+      .search-bar input[type="text"] {
+        padding: 10px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        width: 300px;
+        max-width: 100%;
+      }
+      #services h1 {
+        font-weight: bolder;
+      }
+      .models {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .model {
+        background-color: white;
+        border-radius: 10px;
+        margin: 10px;
+        width: 20vw;
+        height: 40vh;
+        transition: border 0.3 ease;
+        border: 2px solid rgb(198, 198, 198);
+      }
+      .model:hover {
+        box-shadow: 10px 10px 10px rgb(107, 107, 108);
+      }
+      .model .imge {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 80%;
+        border-bottom: 2px solid rgb(198, 198, 198);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      .model h2 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+      .model p {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        bottom: 0;
+        width: 100%;
+        margin-top: auto;
+      }
+      /* appointment */
+      .container {
+        min-width: 60vw;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        text-align: left;
+        display: block;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="date"],
+      input[type="time"],
+      textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      select {
+        display: block;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html"><span class="logo"> HealthForecast </span></a>
+
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="Doctors.html">Doctors</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="manage.html">Appointment</a></li>
+      </ul>
+    </nav>
+    {% if result %}
+    <h1>{{result}}</h1>
+    {% endif %}
+    <div class="container">
+      <h2>Book an Appointment</h2>
+
+      <form action="" method="POST" id="appointmentForm">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="Name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@gmail.com"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone:</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="1234567890"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="doctor">Doctors</label>
+          <select name="doc" id="doctors">
+            <option value="john">Dr. John Doe(Cardiologist)</option>
+            <option value="Jane">Dr. Jane Smith(Physician)</option>
+            <option value="Michael">
+              Dr. Michael Johnson(Endocrinologist)
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date">Preferred Date:</label>
+          <input type="date" id="date" name="date" required />
+        </div>
+        <div class="form-group">
+          <label for="time">Preferred Time:</label>
+          <input type="time" id="time" name="time" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message (optional):</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="comment...."
+          ></textarea>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <footer>
+      <p>&copy; 2024 Medical Website. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

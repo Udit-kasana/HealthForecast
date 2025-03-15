@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        text-align: center;
+        background-image: url("static/img/61807.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: bolder;
+        margin-bottom: 10px;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      nav {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        padding: 10px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 5rem;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: 900;
+        color: white;
+      }
+
+      .logo:hover {
+        color: rgba(255, 255, 255, 0.703);
+      }
+      nav ul {
+        list-style: none;
+      }
+      nav ul li {
+        display: inline;
+        margin-right: 10px;
+      }
+      li {
+        padding: 3px;
+        font-weight: bolder;
+        border-radius: 5px;
+      }
+      li:hover {
+        background-color: rgba(26, 26, 26, 0.7);
+      }
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      section {
+        padding: 20px;
+        transition: background-color 0.3s ease;
+      }
+
+      .hero {
+        text-align: center;
+        color: rgb(76, 2, 76);
+      }
+      .hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+      .hero p {
+        font-size: 20px;
+        margin-bottom: 30px;
+      }
+      .search-bar input[type="text"] {
+        padding: 10px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        width: 300px;
+        max-width: 100%;
+      }
+      #services h1 {
+        font-weight: bolder;
+      }
+      .models {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .model {
+        background-color: white;
+        border-radius: 10px;
+        margin: 10px;
+        width: 20vw;
+        height: 40vh;
+        transition: border 0.3 ease;
+        border: 2px solid rgb(198, 198, 198);
+      }
+      .model:hover {
+        box-shadow: 10px 10px 10px rgb(107, 107, 108);
+      }
+      .model .imge {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 80%;
+        border-bottom: 2px solid rgb(198, 198, 198);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      .model h2 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+      .model p {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        bottom: 0;
+        width: 100%;
+        margin-top: auto;
+      }
+      /* form */
+      .form-container {
+        width: 80vw;
+        margin: auto;
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: #f4f4f4;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      /* Style for form inputs */
+      .form-container input[type="number"],
+      .form-container input[type="ST"],
+      .form-container input[type="submit"] {
+        width: calc(50% - 5px);
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+      .form-container input[type="submit"] {
+        grid-column: 1 / span 2;
+      }
+
+      /* Style for labels */
+      .form-container label {
+        font-weight: bold;
+        display: inline-block;
+        width: 45%;
+        margin-right: 5%;
+        box-sizing: border-box;
+      }
+
+      /* Clearfix for label and input */
+      .form-container::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      /* Style for submit button */
+      .form-container input[type="submit"] {
+        width: 100%;
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+      }
+
+      /* Hover effect for submit button */
+      .form-container input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html"><span class="logo"> HealthForecast </span></a>
+
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="main">
+      <h1>Heart Disease prediction Model</h1>
+      {% if result %}
+      <h1> {{result}}</h1>
+      {% endif %}
+      <div class="form-container">
+        <h2>Intput your details here :</h2>
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="box">
+            <label for="id">Id:</label>
+            <input
+              type="Number"
+              name="id"
+              id="id"
+              placeholder="id"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="diagnosis">Diagnosis:</label>
+            <input
+              type="ST"
+              name="diagnosis"
+              id="diagnosis"
+              placeholder="diagnosis"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="radius_mean">Radius_mean :</label>
+            <input
+              type="number"
+              name="radius_mean"
+              id="radius_mean"
+              placeholder="radius_mean"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="texture_mean">Texture_mean:</label>
+            <input
+              type="number"
+              name="texture_mean"
+              id="texture_mean"
+              placeholder="texture_mean"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="perimeter_mean">Perimeter_mean:</label>
+            <input
+              type="number"
+              name="perimeter_mean"
+              id="perimeter_mean"
+              placeholder="perimeter_mean"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="area_mean">Area_mean:</label>
+            <input
+              type="number"
+              name="area_mean"
+              id="area_mean"
+              placeholder="area_mean"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="smoothness_mean">Smoothness_mean:</label>
+            <input
+              type="number"
+              name="smoothness_mean"
+              id="smoothness_mean"
+              placeholder="smoothness_mean"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="compactness_mean">Compactness_mean:</label>
+            <input
+              type="number"
+              name="compactness_mean"
+              id="compactness_mean"
+              placeholder="compactness_mean"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="concavity_mean">Concavity_mean:</label>
+            <input
+              type="number"
+              name="concavity_mean"
+              id="concavity_mean"
+              placeholder="concavity_mean"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="concave points_mean"> Concave points_mean:</label>
+            <input
+              type="number"
+              name="concave points_mean"
+              id="concave points_mean"
+              placeholder="concave points_mean"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="symmetry_mean">Sym:</label>
+            <input
+              type="number"
+              name="symmetry_mean"
+              id="symmetry_mean"
+              placeholder="symmetry_mean"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="fractal_dimension_mean">Fractal_dimension_mean:</label>
+            <input
+              type="number"
+              name="fractal_dimension_mean"
+              id="fractal_dimension_mean"
+              placeholder="fractal_dimension_mean"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="radius_se">Radius_se:</label>
+            <input
+              type="number"
+              name="radius_se"
+              id="radius_se"
+              placeholder="radius_se"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="texture_se">Texture_se:</label>
+            <input
+              type="number"
+              name="texture_se"
+              id="texture_se"
+              placeholder="texture_se"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="perimeter_se">Perimeter_se:</label>
+            <input
+              type="number"
+              name="perimeter_se"
+              id="perimeter_se"
+              placeholder="perimeter_se"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="area_se">Area_se:</label>
+            <input
+              type="number"
+              name="area_se"
+              id="area_se"
+              placeholder="area se"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="smoothness_se">Smoothness_se:</label>
+            <input
+              type="number"
+              name="smoothness_se"
+              id="smoothness_se"
+              placeholder="smoothness_se"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="compactness_se">Compactness_se:</label>
+            <input
+              type="number"
+              name="compactness_se"
+              id="compactness_se"
+              placeholder="compactness_se"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="concavity_se">Concavity_se:</label>
+            <input
+              type="number"
+              name="concavity_se"
+              id="concavity_se"
+              placeholder="concavity_se"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="concave points_se">Concave points_se:</label>
+            <input
+              type="floatformat"
+              name="concave points_se"
+              id="concave points_se"
+              placeholder="concave points_se"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="symmetry_se">Symmetry_se:</label>
+            <input
+              type="number"
+              name="symmetry_se"
+              id="symmetry_se"
+              placeholder="symmetry_se"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="fractal_dimension_se">Fractal_dimension_mean:</label>
+            <input
+              type="number"
+              name="fractal_dimension_se"
+              id="fractal_dimension_se"
+              placeholder="fractal_dimension_se"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="radius_worst">Radius_worst:</label>
+            <input
+              type="number"
+              name="radius_worst"
+              id="radius_worst"
+              placeholder="radius_worst"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="texture_worst">Texture_worst:</label>
+            <input
+              type="number"
+              name="texture_worst"
+              id="texture_worst"
+              placeholder="texture_worst"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="perimeter_worst">Perimeter_worst:</label>
+            <input
+              type="number"
+              name="perimeter_worst"
+              id="perimeter_worst"
+              placeholder="perimeter_worst"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="area_worst">Area_worst:</label>
+            <input
+              type="number"
+              name="area_worst"
+              id="area_worst"
+              placeholder="area_worst"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="smoothness_worst">Smoothness_worst:</label>
+            <input
+              type="number"
+              name="smoothness_worst"
+              id="smoothness_worst"
+              placeholder="smoothness_worst"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="compactness_worst">Compactness_worst:</label>
+            <input
+              type="number"
+              name="compactness_worst"
+              id="compactness_worst"
+              placeholder="compactness_worst"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="concavity_worst">Concavity_worst:</label>
+            <input
+              type="number"
+              name="concavity_worst"
+              id="concavity_worst"
+              placeholder="concavity_worst"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="concave_worst">Concave_worst:</label>
+            <input
+              type="number"
+              name="concave_worst"
+              id="concave_worst"
+              placeholder="concave_worst"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="symmetry_worst">Symmetry_worst:</label>
+            <input
+              type="number"
+              name="symmetry_worst"
+              id="symmetry_worst"
+              placeholder="symmetry_worst"
+              required
+            /><br />
+          </div>
+          <div class="box">
+            <label for="fractal_dimension_worst"
+              >Fractal_dimension_worst:</label
+            >
+            <input
+              type="number"
+              name="fractal_dimension_worst"
+              id="fractal_dimension_worst"
+              placeholder="fractal_dimension_worst"
+              required
+            /><br />
+          </div>
+
+          <input type="submit" />
+        </form>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; 2024 Medical Website. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

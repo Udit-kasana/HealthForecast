@@ -1,0 +1,972 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- CSS -->
+    <style>
+        /* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Basic styling */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  text-align: center;
+  background-image: url("61807.jpg");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+h1,
+h2,
+h3 {
+  margin-bottom: 10px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+nav {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 5rem;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 900;
+}
+
+nav ul {
+  list-style: none;
+}
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+li {
+  font-weight: bold;
+}
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+.tooltip {
+  position: relative;
+  text-decoration: none;
+}
+
+.tooltip-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltip-content {
+  display: block;
+}
+
+section {
+  padding: 20px;
+  transition: background-color 0.3s ease;
+}
+section:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.hero {
+  text-align: center;
+  padding: 100px 0;
+  color: #2838b1;
+}
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+.search-bar input[type="text"] {
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  width: 300px;
+  max-width: 100%;
+}
+#services h1{
+    font-weight: bolder;
+}
+.models {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.model {
+  background-color: #f5f5f5b6;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  width: 25vw;
+  height: 30vh;
+  transition: border 0.3 ease;
+}
+.model:hover{
+  border: 2px solid gray;
+}
+.model h2 {
+  margin-bottom: 10px;
+}
+.model p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  bottom: 0;
+  width: 100%;
+}
+
+      :root {
+        --primary-color: #435fda;
+        --secondary-color: #d8415c;
+        --body-font-size: 16px;
+        --line-height: 1.5;
+        --content-width: 480px;
+        --background-color: #fff;
+        --background-color-secondary: #f8f8f9;
+        --text-color: #060914;
+        --text-color--muted: #71737f;
+        --line-color: #ededef;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --primary-color: #657bdb;
+          --primary-color--translucent: rgba(85, 106, 195, 0.3);
+          --secondary-color: #d93d59;
+          --background-color: #060913;
+          --background-color-secondary: #0f1424;
+          --text-color: #e4e4e7;
+          --text-color--muted: #838690;
+          --line-color: #303341;
+        }
+      }
+
+      body {
+        font-family: "Geomanist", sans-serif;
+        font-size: var(--body-font-size);
+        line-height: var(--line-height);
+        padding: 0;
+        margin: 0;
+      }
+
+      .wrapper {
+        max-width: var(--content-width);
+        margin: calc(var(--line-height) * 0.5em) auto 0 auto;
+      }
+
+      .results {
+        margin-top: 0.5em;
+        text-align: center;
+      }
+
+      .results > div {
+        margin-bottom: 0.5em;
+      }
+
+      @media (min-width: 440px) {
+        :root {
+          --body-font-size: 18px;
+          --line-height: 1.5;
+        }
+
+        .results {
+          margin: 2em 1em 0 2em;
+          display: flex;
+          justify-content: space-between;
+          column-gap: 1em;
+        }
+        .results > div {
+          margin-bottom: 0;
+        }
+      }
+
+      .choose-gender {
+        display: flex;
+        align-items: stretch;
+        margin-bottom: 2em;
+      }
+
+      .segmented-control {
+        flex: 1;
+        text-align: center;
+        line-height: 2em;
+        border: 1px solid var(--line-color);
+      }
+
+      .segmented-control:first-child {
+        border-radius: 0.5em 0 0 0.5em;
+      }
+
+      .segmented-control:last-child {
+        border-radius: 0 0.5em 0.5em 0;
+      }
+
+      .results {
+        font-weight: bolder;
+      }
+      .results span {
+        font-weight: 500;
+      }
+
+      input[type="range"] {
+        --webkit-appearance: none;
+        margin: 18px 0;
+        width: 100%;
+        transition: all 0.265ms ease-out;
+      }
+
+      input[type="range"]:not(:last-of-type) {
+        margin-top: 0;
+        margin-bottom: 2.5em;
+      }
+
+      input[type="range"]:focus {
+        outline: none;
+      }
+
+      input[type="range"]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 6px;
+        cursor: pointer;
+        background: var(--line-color);
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        box-shadow: 0 0 8px 1px var(--secondary-color),
+          0 0 16px 4px var(--background-color);
+        border: 3px solid #fff;
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+        background: var(--secondary-color);
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -8px;
+      }
+      input[type="range"]:focus::-webkit-slider-runnable-track {
+        background: var(--secondary-color);
+      }
+
+      input[type="radio"] {
+        --webkit-appearance: none;
+        display: none;
+      }
+
+      .segmented-control input[type="radio"] + label {
+        border: 1px solid rgba(0, 0, 0, 0);
+        width: 100%;
+        height: 100%;
+        display: block;
+        cursor: pointer;
+      }
+
+      .segmented-control input[type="radio"]:checked + label {
+        background-color: var(--line-color);
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .segmented-control input[type="radio"]:focus + label {
+        border: 1px solid var(--secondary-color);
+      }
+
+      .segmented-control:first-child input[type="radio"]:checked + label {
+        border-radius: 0.5em 0 0 0.5em;
+      }
+
+      .segmented-control:last-child input[type="radio"]:checked + label {
+        border-radius: 0 0.5em 0.5em 0;
+      }
+
+      input[type="range"]::-moz-range-track {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        background: var(--line-color);
+      }
+
+      input[type="range"]::-moz-range-thumb {
+        box-shadow: 0 0 8px 1px var(--secondary-color),
+          0 0 16px 4px var(--background-color);
+        border: 3px solid #fff;
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+        background: var(--secondary-color);
+        cursor: pointer;
+        --webkit-appearance: none;
+        margin-top: -8px;
+      }
+    </style>
+    <title>Simple Calorie Calculator</title>
+  </head>
+
+  <body>
+    <nav>
+      <span class="logo"> HealthForecast </span>
+
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#doctors">Doctors</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <div id="bmr-calculator" class="wrapper">
+      <div class="calculator">
+        <div class="choose-gender">
+          <div class="segmented-control">
+            <input
+              id="calc-gender-male"
+              type="radio"
+              name="gender"
+              value="male"
+              checked=""
+            /><label for="calc-gender-male">Male</label>
+          </div>
+          <div class="segmented-control">
+            <input
+              id="calc-gender-female"
+              type="radio"
+              name="gender"
+              value="female"
+            /><label for="calc-gender-female">Female</label>
+          </div>
+        </div>
+        <label for="calc-age" id="calc-age_value">Age: 25</label>
+        <input id="calc-age" type="range" value="25" min="13" max="100" />
+        <label for="calc-height" id="calc-height_value">Height: 180cm</label>
+        <input id="calc-height" type="range" value="180" min="80" max="250" />
+        <label for="calc-weight" id="calc-weight_value">Weight: 80kg</label>
+        <input id="calc-weight" type="range" value="80" min="40" max="200" />
+        <label for="calc-walking" id="calc-walking_value"
+          >Walking: 2 hours per week</label
+        >
+        <input id="calc-walking" type="range" value="2" min="0" max="50" />
+        <label for="calc-cardio" id="calc-cardio_value"
+          >Cardio: 1 hour per week</label
+        >
+        <input id="calc-cardio" type="range" value="1" min="0" max="50" />
+      </div>
+      <div class="results">
+        <div id="calc-target-gain">
+          To Gain Weight:<br />
+          <span>2700 calories</span>
+        </div>
+        <div id="calc-target-maintain">
+          To Maintain:<br />
+          <span>2400 calories</span>
+        </div>
+        <div id="calc-target-lose">
+          To Lose Weight:<br />
+          <span>1900 calories</span>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2024 Medical Website. All rights reserved.</p>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.js"
+      integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(".calculator input").on("input change", function (event) {
+        var parameterName = $(this).attr("id").split("calc-")[1];
+        var centimeters = $(this).val();
+
+        switch (parameterName) {
+          case "height":
+            $("#calc-height_value").html("Height: " + centimeters + " cm");
+            break;
+          case "weight":
+            var kg = $(this).val();
+            $("#calc-weight_value").html("Weight: " + kg + " kg");
+            break;
+          case "age":
+            $("#calc-age_value").html("Age: " + $(this).val());
+            break;
+          case "cardio":
+            $("#calc-cardio_value").html(
+              "Cardio: " + $(this).val() + " hours per week"
+            );
+            break;
+          case "walking":
+            $("#calc-walking_value").html(
+              "Walking: " + $(this).val() + " hours per week"
+            );
+            break;
+        }
+
+        var height = parseInt($("#calc-height").val(), 10);
+        var age = parseInt($("#calc-age").val(), 10);
+        var weight = parseInt($("#calc-weight").val(), 10);
+        var walking = parseInt($("#calc-walking").val(), 10);
+        var cardio = parseInt($("#calc-cardio").val(), 10);
+        var gender = $(".calculator input[name='gender']:checked").val();
+
+        var bmr =
+          parseInt(10 * weight + 6.25 * height - 5 * age, 10) +
+          (gender === "male" ? 5 : -161);
+        bmr = bmr * 1.2;
+        bmr += (walking * 60 * ((0.03 * weight * 1) / 0.45)) / 7;
+        bmr += (cardio * 60 * ((0.07 * weight * 1) / 0.45)) / 7;
+        bmr = Math.floor(bmr);
+
+        var targetGainWeight = Math.round((bmr + 300) / 100) * 100;
+        var targetMaintain = Math.round(bmr / 100) * 100;
+        var targetLoseWeight = Math.round((bmr - 500) / 100) * 100;
+
+        $("#calc-target-gain span").html(targetGainWeight + " calories");
+        $("#calc-target-maintain span").html(targetMaintain + " calories");
+        $("#calc-target-lose span").html(targetLoseWeight + " calories");
+      });
+    </script>
+  </body>
+</html> {% endcomment %}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- CSS -->
+    <style>
+      /* Reset default margin and padding */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Basic styling */
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        text-align: center;
+        background-image: url("static/img/61807.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: bolder;
+        margin-bottom: 10px;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      nav {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        padding: 10px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 5rem;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: 900;
+        color: white;
+      }
+
+      .logo:hover {
+        color: rgba(255, 255, 255, 0.703);
+      }
+      nav ul {
+        list-style: none;
+      }
+      nav ul li {
+        display: inline;
+        margin-right: 10px;
+      }
+      li {
+        padding: 3px;
+        font-weight: bolder;
+        border-radius: 5px;
+      }
+      li:hover {
+        background-color: rgba(26, 26, 26, 0.7);
+      }
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      section {
+        padding: 20px;
+        transition: background-color 0.3s ease;
+      }
+
+      .hero {
+        text-align: center;
+        color: #2838b1;
+      }
+      .hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+      .hero p {
+        font-size: 20px;
+        margin-bottom: 30px;
+      }
+      .search-bar input[type="text"] {
+        padding: 10px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        width: 300px;
+        max-width: 100%;
+      }
+      #services h1 {
+        font-weight: bolder;
+      }
+      .models {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .model {
+        background-color: white;
+        border-radius: 10px;
+        margin: 10px;
+        width: 20vw;
+        height: 40vh;
+        transition: border 0.3 ease;
+        border: 2px solid rgb(198, 198, 198);
+      }
+      .model:hover {
+        box-shadow: 10px 10px 10px rgb(107, 107, 108);
+      }
+      .model .imge {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 80%;
+        border-bottom: 2px solid rgb(198, 198, 198);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      .wellBeing {
+        background-image: url(images/WELL.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .prediction {
+        background-image: url(images/prediction.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .chat {
+        background-image: url(images/chat.png);
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      .BMI {
+        background-image: url(images/WELL.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .model h2 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+      .model p {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        bottom: 0;
+        width: 100%;
+        margin-top: auto;
+      }
+
+      /* Additional styling can be added as needed */
+
+      :root {
+        --primary-color: #435fda;
+        --secondary-color: #d8415c;
+        --body-font-size: 16px;
+        --line-height: 1.5;
+        --content-width: 480px;
+        --background-color: #fff;
+        --background-color-secondary: #f8f8f9;
+        --text-color: #060914;
+        --text-color--muted: #71737f;
+        --line-color: #ededef;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --primary-color: #657bdb;
+          --primary-color--translucent: rgba(85, 106, 195, 0.3);
+          --secondary-color: #d93d59;
+          --background-color: #060913;
+          --background-color-secondary: #0f1424;
+          --text-color: #e4e4e7;
+          --text-color--muted: #838690;
+          --line-color: #303341;
+        }
+      }
+
+      body {
+        font-family: "Geomanist", sans-serif;
+        font-size: var(--body-font-size);
+        line-height: var(--line-height);
+        padding: 0;
+        margin: 0;
+      }
+
+      .wrapper {
+        max-width: var(--content-width);
+        margin: calc(var(--line-height) * 0.5em) auto 0 auto;
+      }
+
+      .results {
+        margin-top: 0.5em;
+        text-align: center;
+      }
+
+      .results > div {
+        margin-bottom: 0.5em;
+      }
+
+      @media (min-width: 440px) {
+        :root {
+          --body-font-size: 18px;
+          --line-height: 1.5;
+        }
+
+        .results {
+          margin: 2em 1em 0 2em;
+          display: flex;
+          justify-content: space-between;
+          column-gap: 1em;
+        }
+        .results > div {
+          margin-bottom: 0;
+        }
+      }
+
+      .choose-gender {
+        display: flex;
+        align-items: stretch;
+        margin-bottom: 2em;
+      }
+
+      .segmented-control {
+        flex: 1;
+        text-align: center;
+        line-height: 2em;
+        border: 1px solid var(--line-color);
+      }
+
+      .segmented-control:first-child {
+        border-radius: 0.5em 0 0 0.5em;
+      }
+
+      .segmented-control:last-child {
+        border-radius: 0 0.5em 0.5em 0;
+      }
+
+      .results {
+        font-weight: bolder;
+      }
+      .results span {
+        font-weight: 500;
+      }
+
+      input[type="range"] {
+        --webkit-appearance: none;
+        margin: 18px 0;
+        width: 100%;
+        transition: all 0.265ms ease-out;
+      }
+
+      input[type="range"]:not(:last-of-type) {
+        margin-top: 0;
+        margin-bottom: 2.5em;
+      }
+
+      input[type="range"]:focus {
+        outline: none;
+      }
+
+      input[type="range"]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 6px;
+        cursor: pointer;
+        background: var(--line-color);
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        box-shadow: 0 0 8px 1px var(--secondary-color),
+          0 0 16px 4px var(--background-color);
+        border: 3px solid #fff;
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+        background: var(--secondary-color);
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -8px;
+      }
+      input[type="range"]:focus::-webkit-slider-runnable-track {
+        background: var(--secondary-color);
+      }
+
+      input[type="radio"] {
+        --webkit-appearance: none;
+        display: none;
+      }
+
+      .segmented-control input[type="radio"] + label {
+        border: 1px solid rgba(0, 0, 0, 0);
+        width: 100%;
+        height: 100%;
+        display: block;
+        cursor: pointer;
+      }
+
+      .segmented-control input[type="radio"]:checked + label {
+        background-color: var(--line-color);
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .segmented-control input[type="radio"]:focus + label {
+        border: 1px solid var(--secondary-color);
+      }
+
+      .segmented-control:first-child input[type="radio"]:checked + label {
+        border-radius: 0.5em 0 0 0.5em;
+      }
+
+      .segmented-control:last-child input[type="radio"]:checked + label {
+        border-radius: 0 0.5em 0.5em 0;
+      }
+
+      input[type="range"]::-moz-range-track {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        background: var(--line-color);
+      }
+
+      input[type="range"]::-moz-range-thumb {
+        box-shadow: 0 0 8px 1px var(--secondary-color),
+          0 0 16px 4px var(--background-color);
+        border: 3px solid #fff;
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+        background: var(--secondary-color);
+        cursor: pointer;
+        --webkit-appearance: none;
+        margin-top: -8px;
+      }
+    </style>
+    <title>Simple Calorie Calculator</title>
+  </head>
+
+  <body>
+    <nav>
+      <a href="index.html"><span class="logo"> HealthForecast </span></a>
+
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#doctors">Doctors</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <div id="bmr-calculator" class="wrapper">
+      <div class="calculator">
+        <div class="choose-gender">
+          <div class="segmented-control">
+            <input
+              id="calc-gender-male"
+              type="radio"
+              name="gender"
+              value="male"
+              checked=""
+            /><label for="calc-gender-male">Male</label>
+          </div>
+          <div class="segmented-control">
+            <input
+              id="calc-gender-female"
+              type="radio"
+              name="gender"
+              value="female"
+            /><label for="calc-gender-female">Female</label>
+          </div>
+        </div>
+        <label for="calc-age" id="calc-age_value">Age: 25</label>
+        <input id="calc-age" type="range" value="25" min="13" max="100" />
+        <label for="calc-height" id="calc-height_value">Height: 180cm</label>
+        <input id="calc-height" type="range" value="180" min="80" max="250" />
+        <label for="calc-weight" id="calc-weight_value">Weight: 80kg</label>
+        <input id="calc-weight" type="range" value="80" min="40" max="200" />
+        <label for="calc-walking" id="calc-walking_value"
+          >Walking: 2 hours per week</label
+        >
+        <input id="calc-walking" type="range" value="2" min="0" max="50" />
+        <label for="calc-cardio" id="calc-cardio_value"
+          >Cardio: 1 hour per week</label
+        >
+        <input id="calc-cardio" type="range" value="1" min="0" max="50" />
+      </div>
+      <div class="results">
+        <div id="calc-target-gain">
+          To Gain Weight:<br />
+          <span>2700 calories</span>
+        </div>
+        <div id="calc-target-maintain">
+          To Maintain:<br />
+          <span>2400 calories</span>
+        </div>
+        <div id="calc-target-lose">
+          To Lose Weight:<br />
+          <span>1900 calories</span>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2024 Medical Website. All rights reserved.</p>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.js"
+      integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(".calculator input").on("input change", function (event) {
+        var parameterName = $(this).attr("id").split("calc-")[1];
+        var centimeters = $(this).val();
+
+        switch (parameterName) {
+          case "height":
+            $("#calc-height_value").html("Height: " + centimeters + " cm");
+            break;
+          case "weight":
+            var kg = $(this).val();
+            $("#calc-weight_value").html("Weight: " + kg + " kg");
+            break;
+          case "age":
+            $("#calc-age_value").html("Age: " + $(this).val());
+            break;
+          case "cardio":
+            $("#calc-cardio_value").html(
+              "Cardio: " + $(this).val() + " hours per week"
+            );
+            break;
+          case "walking":
+            $("#calc-walking_value").html(
+              "Walking: " + $(this).val() + " hours per week"
+            );
+            break;
+        }
+
+        var height = parseInt($("#calc-height").val(), 10);
+        var age = parseInt($("#calc-age").val(), 10);
+        var weight = parseInt($("#calc-weight").val(), 10);
+        var walking = parseInt($("#calc-walking").val(), 10);
+        var cardio = parseInt($("#calc-cardio").val(), 10);
+        var gender = $(".calculator input[name='gender']:checked").val();
+
+        var bmr =
+          parseInt(10 * weight + 6.25 * height - 5 * age, 10) +
+          (gender === "male" ? 5 : -161);
+        bmr = bmr * 1.2;
+        bmr += (walking * 60 * ((0.03 * weight * 1) / 0.45)) / 7;
+        bmr += (cardio * 60 * ((0.07 * weight * 1) / 0.45)) / 7;
+        bmr = Math.floor(bmr);
+
+        var targetGainWeight = Math.round((bmr + 300) / 100) * 100;
+        var targetMaintain = Math.round(bmr / 100) * 100;
+        var targetLoseWeight = Math.round((bmr - 500) / 100) * 100;
+
+        $("#calc-target-gain span").html(targetGainWeight + " calories");
+        $("#calc-target-maintain span").html(targetMaintain + " calories");
+        $("#calc-target-lose span").html(targetLoseWeight + " calories");
+      });
+    </script>
+  </body>
+</html>
